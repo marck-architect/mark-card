@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+<defs><linearGradient id="fac-bg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0062E0"/><stop offset="1" stop-color="#19AFFF"/></linearGradient>
+<clipPath id="fac-s"><circle cx="24" cy="24" r="24"/></clipPath>
+<clipPath id="fac-w"><path d="M-48 4q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0V60H-48Z" transform="translate(0 52)"><animateTransform attributeName="transform" type="translate" values="0 52;0 -6;0 -6;0 52;0 52" keyTimes="0;.38;.72;.95;1" calcMode="spline" keySplines=".45 0 .25 1;0 0 1 1;.5 0 .7 1;0 0 1 1" dur="6s" begin="1.0s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" additive="sum" from="0 0" to="24 0" dur="1.6s" repeatCount="indefinite"/></path></clipPath>
+<linearGradient id="fac-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<g clip-path="url(#fac-s)">
+<rect width="48" height="48" fill="#fff"/>
+<mask id="fac-m1"><rect width="48" height="48" fill="#fff"/><path transform="scale(2)" fill="#000" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></mask><rect width="48" height="48" fill="#0866FF" mask="url(#fac-m1)"/>
+<g clip-path="url(#fac-w)"><rect width="48" height="48" fill="url(#fac-bg)"/><rect width="48" height="48" fill="url(#fac-gl)"/><mask id="fac-m2"><rect width="48" height="48" fill="#fff"/><path transform="scale(2)" fill="#000" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></mask><rect width="48" height="48" fill="#fff" mask="url(#fac-m2)"/></g>
+</g>
+<circle cx="24" cy="24" r="23.4" fill="none" stroke="#E4DED3" stroke-width="1.2"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+<defs><linearGradient id="cal-bg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1E9E46"/><stop offset="1" stop-color="#4CD964"/></linearGradient>
+<clipPath id="cal-s"><circle cx="24" cy="24" r="24"/></clipPath>
+<clipPath id="cal-w"><path d="M-48 4q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0V60H-48Z" transform="translate(0 52)"><animateTransform attributeName="transform" type="translate" values="0 52;0 -6;0 -6;0 52;0 52" keyTimes="0;.38;.72;.95;1" calcMode="spline" keySplines=".45 0 .25 1;0 0 1 1;.5 0 .7 1;0 0 1 1" dur="6s" begin="1.5s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" additive="sum" from="0 0" to="24 0" dur="1.6s" repeatCount="indefinite"/></path></clipPath>
+<linearGradient id="cal-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<g clip-path="url(#cal-s)">
+<rect width="48" height="48" fill="#fff"/>
+<path transform="translate(10.90 12.10) scale(1.0417)" fill="#34C759" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+<g clip-path="url(#cal-w)"><rect width="48" height="48" fill="url(#cal-bg)"/><rect width="48" height="48" fill="url(#cal-gl)"/><path transform="translate(10.90 12.10) scale(1.0417)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></g>
+</g>
+<circle cx="24" cy="24" r="23.4" fill="none" stroke="#E4DED3" stroke-width="1.2"/>
+</svg>

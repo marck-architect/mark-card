@@ -9,7 +9,7 @@ import {
 } from "motion/react";
 import type { Platform } from "@/config/profile.config";
 import { BRAND_EFFECTS } from "@/components/icons/brand-effects";
-import { InteractiveBrandIcon } from "@/components/icons/InteractiveBrandIcon";
+import { AnimatedIcon } from "@/components/icons/AnimatedIcon";
 
 interface Burst {
   id: number;
@@ -20,16 +20,21 @@ interface Burst {
 /** Evenly spaced directions for the click particles. */
 const ANGLES = [0, 60, 120, 180, 240, 300] as const;
 
-/** How long a touch press keeps the icon fully filled after release. */
+/** How long a touch press keeps the tile highlighted after release. */
 const PRESS_HOLD_MS = 700;
 
 interface PlatformTileProps {
   platform: Platform;
-  /** Position in the grid; staggers the start of the idle fill loop. */
-  index?: number;
+  /** Raw SVG markup of this platform's animated badge. */
+  iconSvg: string;
 }
 
-export function PlatformTile({ platform, index = 0 }: PlatformTileProps) {
+/**
+ * A platform link. The badge icon animates on its own (wave fill, built into
+ * the SVG); hover, keyboard focus and touch press add a jump, a brand-coloured
+ * border and, on click, a ripple with particles.
+ */
+export function PlatformTile({ platform, iconSvg }: PlatformTileProps) {
   const reduce = useReducedMotion() ?? false;
   const effect = BRAND_EFFECTS[platform.id];
   const [bursts, setBursts] = useState<Burst[]>([]);
@@ -65,6 +70,23 @@ export function PlatformTile({ platform, index = 0 }: PlatformTileProps) {
     tap: { borderColor: effect.color, backgroundColor: "#ffffff" },
   };
 
+  // The badge jumps; these variants are driven by the tile's state above.
+  const jump: Variants = reduce
+    ? { rest: {}, hover: {}, tap: {} }
+    : {
+        rest: { y: 0, rotate: 0, scale: 1 },
+        hover: {
+          y: [0, -7, 0, -2, 0],
+          rotate: [...effect.tilt],
+          scale: [...effect.pop],
+          transition: { duration: 0.65, ease: "easeOut" },
+        },
+        tap: {
+          scale: [1, 0.86, 1.18, 1],
+          transition: { duration: 0.4, ease: "easeOut" },
+        },
+      };
+
   return (
     <motion.a
       href={platform.href}
@@ -85,15 +107,15 @@ export function PlatformTile({ platform, index = 0 }: PlatformTileProps) {
       onTap={releasePress}
       onTapCancel={releasePress}
       onClick={handleClick}
-      className="relative flex items-center gap-2 overflow-hidden rounded-lg border p-2 shadow-card"
+      className="relative flex items-center gap-3 overflow-hidden lg:gap-2 rounded-lg border p-2 shadow-card"
     >
-      <InteractiveBrandIcon
-        platform={platform.id}
-        reduceMotion={reduce}
-        engaged={engaged}
-        loopDelay={index * 1.2}
-        className="size-6 shrink-0"
-      />
+      <motion.span
+        variants={jump}
+        className="block shrink-0"
+        style={{ transformOrigin: "50% 100%" }}
+      >
+        <AnimatedIcon svg={iconSvg} className="size-[38px] lg:size-8" />
+      </motion.span>
       <span className="truncate text-xs">{platform.label}</span>
 
       <AnimatePresence>

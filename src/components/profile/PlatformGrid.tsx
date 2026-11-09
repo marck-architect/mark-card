@@ -1,4 +1,5 @@
 import { platforms } from "@/config/profile.config";
+import { readIcon } from "@/lib/icons";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PlatformTile } from "./PlatformTile";
 
@@ -9,9 +10,9 @@ export function PlatformGrid() {
         Platforms
       </SectionLabel>
       <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {platforms.map((p, i) => (
+        {platforms.map((p) => (
           <li key={p.id}>
-            <PlatformTile platform={p} index={i} />
+            <PlatformTile platform={p} iconSvg={readIcon(p.id)} />
           </li>
         ))}
       </ul>

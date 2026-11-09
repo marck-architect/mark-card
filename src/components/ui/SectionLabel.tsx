@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 interface SectionLabelProps {
   id: string;
   children: ReactNode;
-  /** Optional icon shown before the text. */
+  /** Optional icon shown before the text (already a complete badge). */
   icon?: ReactNode;
   className?: string;
 }
@@ -18,16 +18,9 @@ export function SectionLabel({
   return (
     <h2
       id={id}
-      className={`flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-ink ${className}`}
+      className={`flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink ${className}`}
     >
-      {icon && (
-        <span
-          aria-hidden="true"
-          className="grid size-6 shrink-0 place-items-center rounded-full bg-ink text-gold-light"
-        >
-          {icon}
-        </span>
-      )}
+      {icon}
       {children}
     </h2>
   );

@@ -103,6 +103,109 @@ test.describe("MARK card", () => {
     expect(new Set(tops).size).toBe(1);
   });
 
+  for (const width of [1024, 1280, 1920]) {
+    test(`platform labels are not truncated at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/");
+      const truncated = await page
+        .locator("section[aria-labelledby=platforms-title] a span.truncate")
+        .evaluateAll((els) =>
+          els.filter((el) => el.scrollWidth > el.clientWidth).map((el) => el.textContent),
+        );
+      expect(truncated).toEqual([]);
+    });
+  }
+
+  test("icon animations start after load and run while visible", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const animated = () =>
+      page.evaluate(() =>
+        [...document.querySelectorAll("svg")]
+          .filter((s) => s.querySelector("animateTransform"))
+          .map((s) => s.animationsPaused()),
+      );
+    expect(await animated()).toHaveLength(6);
+    // Everything is on screen at the default phone viewport, so all six start.
+    await expect.poll(async () => (await animated()).every((p) => !p)).toBe(true);
+  });
+
+  test("all icons fill and drain in sync", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForTimeout(2500);
+    // Sample the timelines several times across a full 6s loop.
+    for (let i = 0; i < 4; i++) {
+      const times = await page.evaluate(() =>
+        [...document.querySelectorAll("svg")]
+          .filter((s) => s.querySelector("animateTransform"))
+          .map((s) => s.getCurrentTime()),
+      );
+      expect(times).toHaveLength(6);
+      expect(Math.max(...times) - Math.min(...times)).toBeLessThan(0.3);
+      await page.waitForTimeout(1500);
+    }
+  });
+
+  test("icons stay in sync after being scrolled out of view and back", async ({
+    page,
+  }) => {
+    // Tall enough that the Bio and Google direction icons share the first screen.
+    await page.setViewportSize({ width: 390, height: 520 });
+    await page.goto("/");
+    await page.waitForTimeout(2200);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(2500);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(800);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(800);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(300);
+    const times = await page.evaluate(() =>
+      [...document.querySelectorAll("svg")]
+        .filter((s) => s.querySelector("animateTransform") && !s.animationsPaused())
+        .map((s) => s.getCurrentTime()),
+    );
+    expect(times.length).toBeGreaterThan(1);
+    expect(Math.max(...times) - Math.min(...times)).toBeLessThan(0.3);
+  });
+
+  test("icon animations pause while scrolled out of view", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 300 });
+    await page.goto("/");
+    await page.waitForTimeout(2200);
+    const states = await page.evaluate(() =>
+      [...document.querySelectorAll("svg")]
+        .filter((s) => s.querySelector("animateTransform"))
+        .map((s) => ({
+          paused: s.animationsPaused(),
+          onScreen: s.getBoundingClientRect().top < window.innerHeight,
+        })),
+    );
+    // Off-screen icons are paused; visible ones run.
+    expect(states.some((s) => !s.onScreen)).toBe(true);
+    for (const s of states) expect(s.paused).toBe(!s.onScreen);
+  });
+
+  test.describe("reduced motion", () => {
+    test.use({ reducedMotion: "reduce" });
+
+    test("icon animations are paused", async ({ page }) => {
+      await page.goto("/");
+      // Effects run after hydration; wait until the icons report paused.
+      await expect
+        .poll(() =>
+          page.evaluate(() =>
+            [...document.querySelectorAll("svg")]
+              .filter((s) => s.querySelector("animateTransform"))
+              .every((s) => s.animationsPaused()),
+          ),
+        )
+        .toBe(true);
+    });
+  });
+
   test("phone keeps a single column", async ({ page }) => {
     await page.goto("/");
     const header = await page.locator("header").boundingBox();

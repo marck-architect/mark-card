@@ -1,5 +1,6 @@
-import { UserRound } from "lucide-react";
 import { profile } from "@/config/profile.config";
+import { readIcon } from "@/lib/icons";
+import { AnimatedIcon } from "@/components/icons/AnimatedIcon";
 import { Card } from "@/components/ui/Card";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -9,11 +10,13 @@ export function BioCard() {
       <SectionLabel
         id="bio-title"
         className="mb-3"
-        icon={<UserRound className="size-3.5" />}
+        icon={<AnimatedIcon svg={readIcon("bio")} className="size-11" />}
       >
         Bio
       </SectionLabel>
-      <p className="text-xs leading-relaxed text-ink/60 lg:text-sm">{profile.bio}</p>
+      <p className="text-xs leading-relaxed text-ink/60 lg:text-sm">
+        {profile.bio}
+      </p>
     </Card>
   );
 }

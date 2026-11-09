@@ -5,6 +5,12 @@
 
 export type PlatformId = "whatsapp" | "instagram" | "facebook" | "call";
 
+/** Names of the animated badge icons in src/assets/icons (file name without .svg). */
+export type IconName =
+  | PlatformId
+  | "bio"
+  | "google-direction";
+
 export interface Platform {
   readonly id: PlatformId;
   readonly label: string;
@@ -17,6 +23,7 @@ export interface LinkItem {
   readonly id: string;
   readonly label: string;
   readonly href: string;
+  readonly icon: IconName;
 }
 
 export const profile = {
@@ -50,6 +57,7 @@ export const links: readonly LinkItem[] = [
     id: "directions",
     label: "Google direction",
     href: "https://g.co/kgs/iRfq8Tg",
+    icon: "google-direction",
   },
 ];
 

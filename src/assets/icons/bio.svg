@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+<defs><linearGradient id="bio-gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3DCA2"/><stop offset=".55" stop-color="#D2A54E"/><stop offset="1" stop-color="#A87C2A"/></linearGradient><radialGradient id="bio-dk" cx="32%" cy="28%" r="85%"><stop offset="0" stop-color="#2E323B"/><stop offset="1" stop-color="#121418"/></radialGradient>
+<clipPath id="bio-s"><circle cx="24" cy="24" r="24"/></clipPath>
+<clipPath id="bio-w"><path d="M-48 4q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0q6 -4 12 0t12 0V60H-48Z" transform="translate(0 52)"><animateTransform attributeName="transform" type="translate" values="0 52;0 -6;0 -6;0 52;0 52" keyTimes="0;.38;.72;.95;1" calcMode="spline" keySplines=".45 0 .25 1;0 0 1 1;.5 0 .7 1;0 0 1 1" dur="6s" begin="0s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" additive="sum" from="0 0" to="24 0" dur="1.6s" repeatCount="indefinite"/></path></clipPath>
+<linearGradient id="bio-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<g clip-path="url(#bio-s)">
+<rect width="48" height="48" fill="#fff"/>
+<rect x="10" y="13" width="28" height="22" rx="4" fill="url(#bio-gd)"/><path d="M20 13v-1.4a1.8 1.8 0 0 1 1.8-1.8h4.4a1.8 1.8 0 0 1 1.8 1.8V13" fill="none" stroke="url(#bio-gd)" stroke-width="1.8"/>
+<circle cx="18" cy="21.6" r="3.1" fill="#fff"/><path d="M12.6 31.2q5.4-6.4 10.8 0z" fill="#fff"/><rect x="25.5" y="19.4" width="8.5" height="2.2" rx="1.1" fill="#fff"/><rect x="25.5" y="23.6" width="8.5" height="2.2" rx="1.1" fill="#fff"/><rect x="25.5" y="27.8" width="5.5" height="2.2" rx="1.1" fill="#fff"/>
+<g clip-path="url(#bio-w)"><rect width="48" height="48" fill="url(#bio-dk)"/><rect width="48" height="48" fill="url(#bio-gl)"/><rect x="10" y="13" width="28" height="22" rx="4" fill="url(#bio-gd)"/><path d="M20 13v-1.4a1.8 1.8 0 0 1 1.8-1.8h4.4a1.8 1.8 0 0 1 1.8 1.8V13" fill="none" stroke="url(#bio-gd)" stroke-width="1.8"/>
+<circle cx="18" cy="21.6" r="3.1" fill="#16181D"/><path d="M12.6 31.2q5.4-6.4 10.8 0z" fill="#16181D"/><rect x="25.5" y="19.4" width="8.5" height="2.2" rx="1.1" fill="#16181D"/><rect x="25.5" y="23.6" width="8.5" height="2.2" rx="1.1" fill="#16181D"/><rect x="25.5" y="27.8" width="5.5" height="2.2" rx="1.1" fill="#16181D"/></g>
+</g>
+<circle cx="24" cy="24" r="23.4" fill="none" stroke="#E4DED3" stroke-width="1.2"/>
+</svg>
