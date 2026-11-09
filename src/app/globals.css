@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/*
+ * MARK Architects design tokens.
+ * Colour values are taken from the production site (mark-architecture-six.vercel.app).
+ */
+@theme {
+  --color-ink: #15191e;
+  --color-ink-soft: #2a2f35;
+  --color-cream: #f6f0e4;
+  --color-surface: #fcf8f8;
+  --color-surface-low: #f6f3f2;
+  --color-surface-high: #ebe7e7;
+  /* Page backdrop: white, matching the cards. */
+  --color-page: #ffffff;
+
+  --color-gold: #c9a86e;
+  --color-gold-light: #e8c889;
+  --color-gold-deep: #7e5714;
+  --color-gold-darker: #684710;
+  --color-gold-line: #b89865;
+
+  --color-brand-facebook: #0866ff;
+  --color-brand-whatsapp: #25d366;
+  --color-brand-instagram: #e4405f;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(21 25 30 / 0.05), 0 4px 12px rgb(21 25 30 / 0.05);
+}
+
+html {
+  background: var(--color-page);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Frosted-glass panel used on the profile header. */
+.bg-glass {
+  background: rgb(21 25 30 / 0.45);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
