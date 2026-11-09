@@ -39,6 +39,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Hides the floating "N" dev badge; it never ships to production anyway.
+  devIndicators: false,
   turbopack: {
     rules: {
       "*.css": {

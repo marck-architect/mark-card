@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function BioCard() {
   return (
-    <Card aria-labelledby="bio-title" className="mt-5">
+    <Card aria-labelledby="bio-title" className="mt-5 lg:mt-0">
       <SectionLabel
         id="bio-title"
         className="mb-3"
@@ -13,7 +13,7 @@ export function BioCard() {
       >
         Bio
       </SectionLabel>
-      <p className="text-xs leading-relaxed text-ink/60">{profile.bio}</p>
+      <p className="text-xs leading-relaxed text-ink/60 lg:text-sm">{profile.bio}</p>
     </Card>
   );
 }

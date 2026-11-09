@@ -74,6 +74,42 @@ test.describe("MARK card", () => {
     expect(overflow).toBe(0);
   });
 
+  for (const width of [768, 1024, 1440, 1920]) {
+    test(`has no horizontal scroll at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/");
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - window.innerWidth,
+      );
+      expect(overflow).toBe(0);
+    });
+  }
+
+  test("desktop uses two columns: profile card left, content right", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+    const header = await page.locator("header").boundingBox();
+    const bio = await page.locator("#bio-title").boundingBox();
+    expect(header).not.toBeNull();
+    expect(bio).not.toBeNull();
+    // Bio sits to the right of the profile card, not below it.
+    expect(bio!.x).toBeGreaterThan(header!.x + header!.width);
+    // Four platform tiles share one row.
+    const tops = await page
+      .locator("section[aria-labelledby=platforms-title] a")
+      .evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top)));
+    expect(new Set(tops).size).toBe(1);
+  });
+
+  test("phone keeps a single column", async ({ page }) => {
+    await page.goto("/");
+    const header = await page.locator("header").boundingBox();
+    const bio = await page.locator("#bio-title").boundingBox();
+    expect(bio!.y).toBeGreaterThan(header!.y + header!.height);
+  });
+
   test("has no automatically detectable accessibility violations", async ({
     page,
   }) => {
