@@ -44,7 +44,7 @@ export const profile = {
   phone: "+923449240884",
   /** Secondary number behind the "Call" platform button. */
   callPhone: "+923130003322",
-  website: "https://mark-architecture-six.vercel.app",
+  website: "https://mark-architects.com/",
   images: {
     avatar: "/images/profile.webp",
     logoDark: "/images/logo-dark.png",
