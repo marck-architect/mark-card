@@ -9,11 +9,11 @@ const isProd = process.env.NODE_ENV === "production";
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "font-src 'self' data:",
-  "connect-src 'self'",
+  `script-src 'self' https://markarchitectscard.vercel.app 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
+  "style-src 'self' https://markarchitectscard.vercel.app 'unsafe-inline'",
+  "img-src 'self' data: blob: https://markarchitectscard.vercel.app",
+  "font-src 'self' data: https://markarchitectscard.vercel.app",
+  "connect-src 'self' https://markarchitectscard.vercel.app",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -36,6 +36,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Tells Next.js to request CSS/JS chunks directly from the card app's Vercel origin
+  // when served under the reverse proxy (e.g. https://www.mark-architects.com/card):
+  assetPrefix: isProd ? "https://markarchitectscard.vercel.app" : undefined,
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
